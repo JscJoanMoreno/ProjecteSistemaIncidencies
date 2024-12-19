@@ -7,10 +7,21 @@ public class SistemaIncidencies {
     private ArrayList<ReportIncidencia>incidencies;
 
     public SistemaIncidencies(ArrayList<Usuari> usuaris, ArrayList<Treballador> treballadors, ArrayList<ReportIncidencia> incidencies) {
-        this.usuaris = usuaris;
-        this.treballadors = treballadors;
-        this.incidencies = incidencies;
+        this.usuaris = new ArrayList<>();
+        this.treballadors = new ArrayList<>();
+        this.incidencies = new ArrayList<>();
     }
+
+    public void agregarUsuari(Usuari usuari){
+        usuaris.add(usuari);
+    }
+    public void agregarTreballador(Treballador treballador) {
+        treballadors.add(treballador);
+    }
+    public void agregarIncidencia(ReportIncidencia incidencia){
+            incidencies.add(incidencia);
+    }
+
 
     public ArrayList<Usuari> getUsuaris() {
         return usuaris;
@@ -35,6 +46,8 @@ public class SistemaIncidencies {
     public void setIncidencies(ArrayList<ReportIncidencia> incidencies) {
         this.incidencies = incidencies;
     }
+
+
 
     @Override
     public String toString() {
