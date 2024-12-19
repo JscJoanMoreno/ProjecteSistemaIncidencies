@@ -1,10 +1,12 @@
 public class Usuari {
+        private int idUsuari;
         private String nom;
         private String tipus;
 
-        public Usuari (String nom, String tipus){
+        public Usuari (String nom, String tipus, int idUsuari){
             this.nom = nom;
             this.tipus = tipus;
+            this.idUsuari = idUsuari;
         }
 
     public String getNom() {
@@ -23,10 +25,19 @@ public class Usuari {
         this.tipus = tipus;
     }
 
+    public int getIdUsuari() {
+        return idUsuari;
+    }
+
+    public void setIdUsuari(int idUsuari) {
+        this.idUsuari = idUsuari;
+    }
+
     @Override
     public String toString() {
         return "Usuari{" +
-                "nom='" + nom + '\'' +
+                "idUsuari=" + idUsuari +
+                ", nom='" + nom + '\'' +
                 ", tipus='" + tipus + '\'' +
                 '}';
     }
