@@ -1,60 +1,42 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.Comparator;
 
 public class SistemaIncidencies {
-    private ArrayList<Usuari>usuaris ;
-    private ArrayList<Treballador>treballadors;
-    private ArrayList<ReportIncidencia>incidencies;
+    private PriorityQueue<ReportIncidencia> incidencies; // Prioritat alta primer
 
-    public SistemaIncidencies(ArrayList<Usuari> usuaris, ArrayList<Treballador> treballadors, ArrayList<ReportIncidencia> incidencies) {
-        this.usuaris = new ArrayList<>();
-        this.treballadors = new ArrayList<>();
-        this.incidencies = new ArrayList<>();
+    public SistemaIncidencies() {
+        this.incidencies = new PriorityQueue<>(Comparator.comparingInt(ReportIncidencia::getGrauNecesitat).reversed());
     }
 
-    public void agregarUsuari(Usuari usuari){
-        usuaris.add(usuari);
-    }
-    public void agregarTreballador(Treballador treballador) {
-        treballadors.add(treballador);
-    }
-    public void agregarIncidencia(ReportIncidencia incidencia){
-            incidencies.add(incidencia);
+    public void agregarIncidencia(ReportIncidencia incidencia) {
+        incidencies.add(incidencia);
     }
 
-
-    public ArrayList<Usuari> getUsuaris() {
-        return usuaris;
+    public void assignarTreballador(int idIncidencia, int idTreballador) {
+        for (ReportIncidencia incidencia : incidencies) {
+            if (incidencia.getId() == idIncidencia) {
+                incidencia.assignarTreballador(idTreballador);
+                System.out.println("✔ Incidència " + idIncidencia + " assignada al treballador " + idTreballador);
+                return;
+            }
+        }
+        System.out.println("❌ No s'ha trobat la incidència.");
     }
 
-    public void setUsuaris(ArrayList<Usuari> usuaris) {
-        this.usuaris = usuaris;
+    public void actualitzarEstat(int idIncidencia, String nouEstat) {
+        for (ReportIncidencia incidencia : incidencies) {
+            if (incidencia.getId() == idIncidencia) {
+                incidencia.setEstat(nouEstat);
+                System.out.println("✔ Estat de la incidència " + idIncidencia + " canviat a " + nouEstat);
+                return;
+            }
+        }
+        System.out.println("❌ No s'ha trobat la incidència.");
     }
 
-    public ArrayList<Treballador> getTreballadors() {
-        return treballadors;
-    }
-
-    public void setTreballadors(ArrayList<Treballador> treballadors) {
-        this.treballadors = treballadors;
-    }
-
-    public ArrayList<ReportIncidencia> getIncidencies() {
-        return incidencies;
-    }
-
-    public void setIncidencies(ArrayList<ReportIncidencia> incidencies) {
-        this.incidencies = incidencies;
-    }
-
-
-
-    @Override
-    public String toString() {
-        return "SistemaIncidencies{" +
-                "usuaris=" + usuaris +
-                ", treballadors=" + treballadors +
-                ", incidencies=" + incidencies +
-                '}';
+    public void mostrarIncidencies() {
+        for (ReportIncidencia incidencia : incidencies) {
+            System.out.println(incidencia);
+        }
     }
 }
