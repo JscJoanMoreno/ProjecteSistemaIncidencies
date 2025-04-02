@@ -11,7 +11,7 @@ public class IncidenciaTest {
 
         boolean sortir = false;
         while (!sortir) {
-            System.out.println("\n📌 Menú:");
+            System.out.println("\nMenú:");
             System.out.println("1. Veure incidències");
             System.out.println("2. Assignar treballador");
             System.out.println("3. Actualitzar estat");
@@ -33,15 +33,16 @@ public class IncidenciaTest {
                 case 3:
                     System.out.print("ID de la incidència: ");
                     int idInc = sc.nextInt();
+                    sc.nextLine();
                     System.out.print("Nou estat (pendent / en procés / resolta): ");
-                    String nouEstat = sc.next();
+                    String nouEstat = sc.nextLine();
                     sistema.actualitzarEstat(idInc, nouEstat);
                     break;
                 case 4:
                     sortir = true;
                     break;
                 default:
-                    System.out.println("❌ Opció no vàlida.");
+                    System.out.println("Opció no vàlida.");
             }
         }
         sc.close();

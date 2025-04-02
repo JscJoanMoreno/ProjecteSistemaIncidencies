@@ -1,11 +1,10 @@
-import java.util.PriorityQueue;
-import java.util.Comparator;
+import java.util.ArrayList;
 
 public class SistemaIncidencies {
-    private PriorityQueue<ReportIncidencia> incidencies; // Prioritat alta primer
+    private ArrayList<ReportIncidencia> incidencies;
 
     public SistemaIncidencies() {
-        this.incidencies = new PriorityQueue<>(Comparator.comparingInt(ReportIncidencia::getGrauNecesitat).reversed());
+        this.incidencies = new ArrayList<>();
     }
 
     public void agregarIncidencia(ReportIncidencia incidencia) {
@@ -16,22 +15,22 @@ public class SistemaIncidencies {
         for (ReportIncidencia incidencia : incidencies) {
             if (incidencia.getId() == idIncidencia) {
                 incidencia.assignarTreballador(idTreballador);
-                System.out.println("✔ Incidència " + idIncidencia + " assignada al treballador " + idTreballador);
+                System.out.println("Incidència " + idIncidencia + " assignada al treballador " + idTreballador);
                 return;
             }
         }
-        System.out.println("❌ No s'ha trobat la incidència.");
+        System.out.println("No s'ha trobat la incidència.");
     }
 
     public void actualitzarEstat(int idIncidencia, String nouEstat) {
         for (ReportIncidencia incidencia : incidencies) {
             if (incidencia.getId() == idIncidencia) {
                 incidencia.setEstat(nouEstat);
-                System.out.println("✔ Estat de la incidència " + idIncidencia + " canviat a " + nouEstat);
+                System.out.println("Estat de la incidència " + idIncidencia + " canviat a " + nouEstat);
                 return;
             }
         }
-        System.out.println("❌ No s'ha trobat la incidència.");
+        System.out.println("No s'ha trobat la incidència.");
     }
 
     public void mostrarIncidencies() {

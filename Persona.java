@@ -1,4 +1,4 @@
-public abstract class Persona {
+public class Persona {
     protected int id;
     protected String nom;
 

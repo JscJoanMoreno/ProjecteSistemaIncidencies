@@ -1,14 +1,11 @@
-import java.time.LocalDateTime;
-
 public class ReportIncidencia {
-    private int id;
-    private int grauNecesitat; // 1 = Baix, 2 = Mitjà, 3 = Alt
-    private String material;
-    private String aula;
-    private String estat; // "pendent", "en procés", "resolta"
-    private String descripcio;
+    private final int id;
+    private final int grauNecesitat;
+    private final String material;
+    private final String aula;
+    private String estat;
+    private final String descripcio;
     private int idTreballadorAssignat;
-    private LocalDateTime dataResolucio;
 
     public ReportIncidencia(int id, int grauNecesitat, String material, String aula, String descripcio) {
         this.id = id;
@@ -16,33 +13,16 @@ public class ReportIncidencia {
         this.material = material;
         this.aula = aula;
         this.descripcio = descripcio;
-        this.estat = "pendent"; // Per defecte, l'estat és pendent
-        this.idTreballadorAssignat = -1; // No assignat
-        this.dataResolucio = null; // No resolt
+        this.estat = "pendent";
+        this.idTreballadorAssignat = -1;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public int getGrauNecesitat() {
-        return grauNecesitat;
-    }
-
-    public void setGrauNecesitat(int grauNecesitat) {
-        this.grauNecesitat = grauNecesitat;
-    }
-
-    public String getEstat() {
-        return estat;
-    }
+    public int getId() { return id; }
+    public String getEstat() { return estat; }
 
     public void setEstat(String nouEstat) {
         if (nouEstat.equals("pendent") || nouEstat.equals("en procés") || nouEstat.equals("resolta")) {
             this.estat = nouEstat;
-            if (nouEstat.equals("resolta")) {
-                this.dataResolucio = LocalDateTime.now(); // Marca la resolució
-            }
         }
     }
 
@@ -59,7 +39,6 @@ public class ReportIncidencia {
                 ", Material: " + material +
                 ", Aula: " + aula +
                 ", Descripció: " + descripcio +
-                ", Treballador Assignat: " + (idTreballadorAssignat == -1 ? "Cap" : idTreballadorAssignat) +
-                ", Data Resolució: " + (dataResolucio == null ? "No resolt" : dataResolucio);
+                ", Treballador Assignat: " + (idTreballadorAssignat == -1 ? "Cap" : idTreballadorAssignat);
     }
 }
