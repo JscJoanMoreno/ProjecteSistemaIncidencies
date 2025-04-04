@@ -1,4 +1,4 @@
-public class Usuari extends Persona {
+public final class Usuari extends Persona {
     private String tipus;
 
     public Usuari(int id, String nom, String tipus) {

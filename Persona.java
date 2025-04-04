@@ -1,4 +1,4 @@
-public class Persona {
+public sealed abstract class Persona permits Treballador,Usuari {
     protected int id;
     protected String nom;
 
